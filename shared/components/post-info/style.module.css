@@ -1,0 +1,43 @@
+.postInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .postInfo {
+    flex-direction: column;
+  }
+}
+
+.postAuthor {
+  align-self: flex-start;
+  display: flex;
+  gap: 1rem;
+}
+
+.postTitle {
+  text-align: center;
+}
+
+.postTitle::first-letter,
+.postText::first-letter {
+  text-transform: capitalize;
+}
+
+.userLink {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+  color: #5d6d7c;
+}
+
+.userLink:hover {
+  color: #2f5477;
+  text-shadow: 0 0 1px #2f5477;
+}

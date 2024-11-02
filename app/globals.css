@@ -1,13 +1,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-80: rgba(var(--gray-rgb), 0.8);
+  --gray-alpha-50: rgba(var(--gray-rgb), 0.5);
+  --gray-alpha-02: rgba(var(--gray-rgb), 0.02);
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --box-shadow-gray: 0 4px 14px 4px var(--gray-alpha-50);
 }
 
 html,
@@ -28,15 +28,4 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

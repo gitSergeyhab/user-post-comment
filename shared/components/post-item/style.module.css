@@ -1,0 +1,37 @@
+.postItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  padding: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.postItem:hover {
+  color: var(--gray-alpha-80);
+  box-shadow: var(--box-shadow-gray);
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .text {
+    -webkit-line-clamp: 2;
+  }
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.title::first-letter {
+  text-transform: capitalize;
+}
