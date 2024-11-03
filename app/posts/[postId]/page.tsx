@@ -4,6 +4,14 @@ import { ContentList } from "@/shared/components/content-list";
 import { PostInfo } from "@/shared/components/post-info";
 import { PostWithComments } from "@/types/post";
 
+export const generateMetadata = async ({ params }: UserPageProps) => {
+  const { postId } = await params;
+  const post = await localRequest<PostWithComments>(`/posts/${postId}`);
+  return {
+    title: post.title,
+  };
+};
+
 interface UserPageProps {
   params: Promise<{ postId: string }>;
 }

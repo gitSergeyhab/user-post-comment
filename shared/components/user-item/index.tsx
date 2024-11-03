@@ -1,17 +1,28 @@
-import { UserItemModified } from "@/types/user";
 import Image from "next/image";
 import { FC } from "react";
 import styles from "./style.module.css";
 import Link from "next/link";
+import { RenderMode } from "@/types/example";
+import { getUserHref } from "@/utils/example";
 
-export const UserItem: FC<UserItemModified> = ({
+export interface UseItemProps {
+  email: string;
+  id: number;
+  imageUrl: string;
+  username: string;
+  mode?: RenderMode;
+}
+
+export const UserItem: FC<UseItemProps> = ({
   email,
   id,
   imageUrl,
   username,
+  mode,
 }) => {
+  const href = getUserHref(id, mode);
   return (
-    <Link href={`/${id}`} className={styles.userItem}>
+    <Link href={href} className={styles.userItem}>
       <Image
         key={id}
         src={imageUrl}

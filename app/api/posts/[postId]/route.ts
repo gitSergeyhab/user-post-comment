@@ -22,8 +22,8 @@ export const GET = async (
   try {
     const postId = (await params).postId;
     const [post, comments] = await Promise.all([
-      await requestPost(postId),
-      await requestPostComments(postId),
+      requestPost(postId),
+      requestPostComments(postId),
     ]);
     const user = await requestUser(post.userId);
 
