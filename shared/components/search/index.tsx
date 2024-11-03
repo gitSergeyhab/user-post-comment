@@ -3,8 +3,7 @@
 import { useDebounce } from "@/hooks/use-debounce";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
-import styles from "./style.module.css";
+import { StyledSearch } from "./style";
 
 export default function Search() {
   const router = useRouter();
@@ -26,9 +25,7 @@ export default function Search() {
   }, [debouncedQuery, router]);
 
   return (
-    <input
-      type="search"
-      className={styles.search}
+    <StyledSearch
       value={query}
       onChange={(e) => setQuery(e.target.value)}
       placeholder="имя"

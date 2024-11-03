@@ -1,8 +1,9 @@
+"use client";
+
 import { FC } from "react";
-import styles from "./style.module.css";
-import Link from "next/link";
 import { RenderMode } from "@/types/example";
 import { getUserHref } from "@/utils/example";
+import { Author, PostInfoSection, Text, Title, UserLink } from "./style";
 
 export interface PostInfoProps {
   body: string;
@@ -22,15 +23,13 @@ export const PostInfo: FC<PostInfoProps> = ({
   const href = getUserHref(userId, mode);
 
   return (
-    <section className={styles.postInfo}>
-      <h1 className={styles.postTitle}>{title}</h1>
-      <p className={styles.postAuthor}>
+    <PostInfoSection>
+      <Title>{title}</Title>
+      <Author>
         <span>Author:</span>
-        <Link href={href} className={styles.userLink}>
-          {user.username}
-        </Link>
-      </p>
-      <p className={styles.postText}>{body}</p>
-    </section>
+        <UserLink href={href}>{user.username}</UserLink>
+      </Author>
+      <Text>{body}</Text>
+    </PostInfoSection>
   );
 };

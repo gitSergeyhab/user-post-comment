@@ -1,13 +1,14 @@
+"use client";
+
 import { FC } from "react";
-import styles from "./style.module.css";
 import { Size } from "@/types/ui";
+import { StylesLoader } from "./style";
 
 export interface LoaderProps {
   size?: Size;
 }
 const Loader: FC<LoaderProps> = ({ size = "medium" }) => {
-  const classes = `${styles.loader} ${styles[`loader__${size}`]}`;
-  return <div className={classes}></div>;
+  return <StylesLoader $size={size} />;
 };
 
 export default Loader;

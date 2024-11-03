@@ -1,4 +1,7 @@
-.postItem {
+import Link from "next/link";
+import styled from "styled-components";
+
+export const PostItemLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -6,32 +9,29 @@
   padding: 0.5rem;
   color: inherit;
   text-decoration: none;
-}
 
-.postItem:hover {
-  color: var(--gray-alpha-80);
-  box-shadow: var(--box-shadow-gray);
-}
+  &:hover {
+    color: var(--gray-alpha-80);
+    box-shadow: var(--box-shadow-gray);
+  }
+`;
 
-.text {
+export const Text = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
-}
 
-@media (max-width: 768px) {
-  .text {
+  @media (max-width: 768px) {
     -webkit-line-clamp: 2;
   }
-}
+`;
 
-.title {
+export const Title = styled.div`
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
-}
-
-.title::first-letter {
-  text-transform: capitalize;
-}
+  &::first-letter {
+    text-transform: capitalize;
+  }
+`;

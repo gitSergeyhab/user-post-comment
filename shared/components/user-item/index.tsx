@@ -1,9 +1,9 @@
-import Image from "next/image";
+"use client";
+
 import { FC } from "react";
-import styles from "./style.module.css";
-import Link from "next/link";
 import { RenderMode } from "@/types/example";
 import { getUserHref } from "@/utils/example";
+import { StyledUserItem, UserEmail, UserImg, UserName } from "./style";
 
 export interface UseItemProps {
   email: string;
@@ -22,19 +22,18 @@ export const UserItem: FC<UseItemProps> = ({
 }) => {
   const href = getUserHref(id, mode);
   return (
-    <Link href={href} className={styles.userItem}>
-      <Image
+    <StyledUserItem href={href}>
+      <UserImg
         key={id}
         src={imageUrl}
         alt={username}
         width={100}
         height={100}
-        className={styles.userImg}
       />
       <div>
-        <div className={styles.userName}>{username}</div>
-        <div className={styles.userEmail}>{email}</div>
+        <UserName>{username}</UserName>
+        <UserEmail>{email}</UserEmail>
       </div>
-    </Link>
+    </StyledUserItem>
   );
 };

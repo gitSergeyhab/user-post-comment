@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import styles from "./style.module.css";
+import { StyledButton, StyledHeader, StyledLink } from "./style";
 
 const LINK_DATA = [
   { href: "/", title: "Home" },
@@ -13,15 +12,13 @@ export const Header = () => {
   const router = useRouter();
 
   return (
-    <header className={styles.header}>
+    <StyledHeader>
       {LINK_DATA.map(({ href, title }) => (
-        <Link key={href} href={href} className={styles.link}>
+        <StyledLink key={href} href={href}>
           {title}
-        </Link>
+        </StyledLink>
       ))}
-      <button className={styles.link} onClick={router.back}>
-        Back
-      </button>
-    </header>
+      <StyledButton onClick={router.back}>Back</StyledButton>
+    </StyledHeader>
   );
 };

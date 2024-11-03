@@ -1,19 +1,15 @@
-import Link from "next/link";
+"use client";
+
 import { PropsWithChildren } from "react";
-import styles from "./style.module.css";
+import { NotFoundDiv, StyledLink } from "./style";
 
 export const ErrorComponent = ({ children }: PropsWithChildren) => {
   return (
-    <div className={styles.notFound}>
+    <NotFoundDiv>
       <h2>Error</h2>
       {children || <p>Could not load requested resource</p>}
-
-      <Link href="/" className={styles.link}>
-        Return Home
-      </Link>
-      <Link href="/static-example" className={styles.link}>
-        Return Static
-      </Link>
-    </div>
+      <StyledLink href="/">Return Home</StyledLink>
+      <StyledLink href="/static-example">Return Static</StyledLink>
+    </NotFoundDiv>
   );
 };

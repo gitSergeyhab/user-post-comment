@@ -1,4 +1,6 @@
-.comment {
+import styled from "styled-components";
+
+export const StyledComment = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -7,14 +9,13 @@
   color: inherit;
   text-decoration: none;
   background-color: #fff;
-}
-
-.title {
+`;
+export const Title = styled.div`
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
-}
 
-.title::first-letter {
-  text-transform: capitalize;
-}
+  &::first-letter {
+    text-transform: capitalize;
+  }
+`;

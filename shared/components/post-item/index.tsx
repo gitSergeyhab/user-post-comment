@@ -1,8 +1,9 @@
+"use client";
+
 import { FC } from "react";
-import styles from "./style.module.css";
-import Link from "next/link";
 import { RenderMode } from "@/types/example";
 import { getPostHref } from "@/utils/example";
+import { PostItemLink, Text, Title } from "./style";
 
 export type PostItemProps = {
   body: string;
@@ -20,11 +21,11 @@ export const PostItem: FC<PostItemProps> = ({
 }) => {
   const href = getPostHref(id, mode, userId);
   return (
-    <Link href={href} className={styles.postItem}>
+    <PostItemLink href={href}>
       <div>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.text}>{body}</div>
+        <Title>{title}</Title>
+        <Text>{body}</Text>
       </div>
-    </Link>
+    </PostItemLink>
   );
 };
