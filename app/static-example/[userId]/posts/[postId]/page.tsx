@@ -1,6 +1,6 @@
 // !!!
 // здесь пример SSG на params с двойной вложенностью ({ postId: string; userId: string })
-import { requestPH } from "@/api/placeholder-api";
+import { outerRequest } from "@/api/outer-api";
 import { CommentItem } from "@/shared/components/comment-item";
 import { ContentList } from "@/shared/components/content-list";
 import { PostInfo } from "@/shared/components/post-info";
@@ -14,16 +14,16 @@ interface UserPageProps {
 
 export const generateMetadata = async ({ params }: UserPageProps) => {
   const { postId } = await params;
-  const post = await requestPH<Post>(`/posts/${postId}`);
+  const post = await outerRequest<Post>(`/posts/${postId}`);
   return { title: post.title };
 };
 
 // Подсказано ChatGPT)
 export const generateStaticParams = async () => {
-  const users = await requestPH<User[]>("/users");
+  const users = await outerRequest<User[]>("/users");
   const params = await Promise.all(
     users.map(async (user) => {
-      const posts = await requestPH<Post[]>(`/posts?userId=${user.id}`);
+      const posts = await outerRequest<Post[]>(`/posts?userId=${user.id}`);
       // slice(0, 2) - предварительно загружаем и рендерим только первые 2 поста,
       // чтобы jsonplaceholder не забанил)
       return posts.slice(0, 2).map((post) => ({

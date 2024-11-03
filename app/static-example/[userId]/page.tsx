@@ -3,7 +3,7 @@
 // (сервер на момент билда еще не запущен)
 // здесь пример, что SSG сработает при запросе к внешнему апи
 
-import { requestPH } from "@/api/placeholder-api";
+import { outerRequest } from "@/api/outer-api";
 import { ContentList } from "@/shared/components/content-list";
 import { PostItem } from "@/shared/components/post-item";
 import { UserInfo } from "@/shared/components/user-info";
@@ -16,21 +16,21 @@ interface UserPageProps {
 
 export const generateMetadata = async ({ params }: UserPageProps) => {
   const id = (await params).userId;
-  const user = await requestPH<User>(`/users/${id}`);
+  const user = await outerRequest<User>(`/users/${id}`);
   return {
     title: user.username,
   };
 };
 
 export const generateStaticParams = async () => {
-  const users = await requestPH<User[]>(`/users`);
+  const users = await outerRequest<User[]>(`/users`);
   return users.map((user) => ({ userId: user.id.toString() }));
 };
 
 export default async function UserPage({ params }: UserPageProps) {
   const { userId } = await params;
-  const user = await requestPH<User>(`/users/${userId}`);
-  const posts = await requestPH<Post[]>(`/posts?userId=${userId}`);
+  const user = await outerRequest<User>(`/users/${userId}`);
+  const posts = await outerRequest<Post[]>(`/posts?userId=${userId}`);
   return (
     <div>
       <div>(SSG) prerendered as static HTML </div>

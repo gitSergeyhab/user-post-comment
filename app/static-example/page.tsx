@@ -5,10 +5,10 @@
 import { User } from "@/types/user";
 import { UserItem } from "@/shared/components/user-item";
 import { UserList } from "@/shared/components/user-list";
-import { requestPH } from "@/api/placeholder-api";
+import { outerRequest } from "@/api/outer-api";
 
 export default async function Users() {
-  const users = await requestPH<User[]>(`/users`);
+  const users = await outerRequest<User[]>(`/users`);
   return (
     <>
       <h1>Users Static Generation</h1>
