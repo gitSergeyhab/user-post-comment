@@ -11,7 +11,7 @@ interface Props {
 export default async function Home({ searchParams }: Props) {
   const params = await searchParams;
   const name = params["name"] || "";
-  const users = await localRequest<UserItemModified[]>(`users?name=${name}`);
+  const users = await localRequest<UserItemModified[]>({url:`users?name=${name}`});
   return (
     <>
       <Search />

@@ -6,7 +6,7 @@ import { PostWithComments } from "@/types/post";
 
 export const generateMetadata = async ({ params }: UserPageProps) => {
   const { postId } = await params;
-  const post = await localRequest<PostWithComments>(`/posts/${postId}`);
+  const post = await localRequest<PostWithComments>({url:`/posts/${postId}`});
   return {
     title: post.title,
   };
@@ -18,10 +18,12 @@ interface UserPageProps {
 
 export default async function PostPage({ params }: UserPageProps) {
   const { postId } = await params;
-  const post = await localRequest<PostWithComments>(`/posts/${postId}`);
+  const post = await localRequest<PostWithComments & { cacheChecker: number }>({url:`/posts/${postId}`, revalidate:20 });
   return (
     <div>
       <PostInfo {...post} />
+      cacheChecker (revalidate=20s): {post.cacheChecker}
+
       <section>
         <h2>Comments</h2>
 

@@ -44,7 +44,7 @@ export const GET = async (
     }
 
     const user = await userResponse.json();
-    return NextResponse.json({ ...post, comments, user });
+    return NextResponse.json({ ...post, comments, user, cacheChecker: Math.round(Math.random() * 10000) });
   } catch (error) {
     return NextResponse.json(getErrorResponse((error as Error).message, 500));
   }

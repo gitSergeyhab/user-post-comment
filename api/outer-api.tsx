@@ -8,7 +8,9 @@ export const outerRequest = async <R, B = undefined>(
   body?: B,
   method: Method = "GET"
 ): Promise<R> => {
+  // console.log({url}, 'outerRequest________________________________!!!');
   const response = await fetch(`${SERVER_URL}${url}`, {
+    cache: "force-cache",
     method,
     headers: {
       "Content-Type": "application/json",

@@ -2,10 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 50vh;
   gap: 1rem;
   font-size: larger;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .notFound {
+    font-size: medium;
+  }
 }
 
 .link {

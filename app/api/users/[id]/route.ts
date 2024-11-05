@@ -33,6 +33,7 @@ export const GET = async (
       ...user,
       posts,
       imageUrl: user.id % 2 === 0 ? "/user/g-user.jpg" : "/user/o-user.jpg",
+      cacheChecker:  Math.round(Math.random() * 10000)
     });
   } catch (error) {
     return NextResponse.json(getErrorResponse((error as Error).message, 500));
